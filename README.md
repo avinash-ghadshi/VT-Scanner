@@ -26,6 +26,7 @@ __HOW TO CREATE API KEY__
 __HOW TO INTEGRATE API KEY IN CODE(NOT RECOMMENDED)__
 >1. Open VT-Scanner/scanmod/config/config.go
 >2. At line number 9, Replace *xxxxxxxxxxxxxxxxxxxxxx* with your api key
+
 >__Note:- To run scanner after editing the config file, you will need golang installed on your machine__
 
 **Thanks**
