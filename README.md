@@ -5,10 +5,12 @@ __NOTE:__ **This Scanner Supports only File Scanning. URL Scanning will be avail
 
 __USAGE:__
 >./vtScanner -f \<filename\> -a \<apikey\>
+
 >go run vtScanner.go -f \<filename\> (IF API KEY IS INTEGRATED WITH CONFIGURATION)
 
 __EXAMPLE:__
 >./vtScanner -f /home/test.txt -a xxxxxxxxxxxxxxxxxxx
+
 >go run vtScanner.go -f /home/test.txt (IF API KEY IS INTEGRATED WITH CONFIGURATION)
 
 
