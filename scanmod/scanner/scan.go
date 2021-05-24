@@ -8,6 +8,7 @@ import (
 	"log"
 	"mime/multipart"
 	"os"
+	"strings"
 
 	cmn "modules/scanmod/common"
 	cfg "modules/scanmod/config"
@@ -56,10 +57,17 @@ func SubmitFile(op *cfg.UserOptions) (string, bool) {
 		return res, ok
 	}
 
+	if strings.Contains(res, "error") {
+		return res, ok
+	}
+
 	json.Unmarshal([]byte(res), &RespData)
 
 	rdata := RespData["data"].(map[string]interface{})
 
+	if err != nil {
+		return res, ok
+	}
 	tmpdata := make(map[string]string)
 
 	for key, value := range rdata {
@@ -68,11 +76,11 @@ func SubmitFile(op *cfg.UserOptions) (string, bool) {
 	}
 
 	if tmpdata["type"] != "analysis" {
-		return "", false
+		return res, false
 	}
 
 	if cfg.DEBUG {
-		log.Println(tmpdata)
+		log.Println(res)
 		log.Println("File Submitted successfully. Analyzing Scan Report....")
 	}
 
@@ -108,7 +116,7 @@ func RetriveReport(analysis_id string, op *cfg.UserOptions) (errstr string, rfla
 	}
 
 	if cfg.DEBUG {
-		log.Println(tmpdata)
+		log.Println(res)
 		log.Println("Scan Report Analysis Completed.....")
 	}
 	return res, true

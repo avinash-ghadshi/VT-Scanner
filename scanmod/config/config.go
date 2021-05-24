@@ -21,14 +21,14 @@ type UserOptions struct {
 }
 
 func (uo *UserOptions) GetInputs() (true bool) {
-	opts, _, _ := gogetopt.GetOpt(os.Args[1:], "f:u:k:")
+	opts, _, _ := gogetopt.GetOpt(os.Args[1:], "f:u:a:")
 
 	for k, v := range opts {
 		if k == "f" {
 			uo.File = v.Value
 		} else if k == "u" {
 			uo.Url = v.Value
-		} else if k == "k" {
+		} else if k == "a" {
 			uo.Apikey = v.Value
 		}
 	}
